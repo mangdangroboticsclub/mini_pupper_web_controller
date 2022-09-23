@@ -1,0 +1,14 @@
+# This test jumping
+1=Activate Robot
+echo Robot should show "walk.png"
+25=Wait
+26=Jump
+25=Wait
+26=Jump
+25=Wait
+26=Jump
+echo Robot should have made a full jump
+25=Wait
+1=Activate Robot
+echo Robot should show "notconnect.png"
+25=Wait

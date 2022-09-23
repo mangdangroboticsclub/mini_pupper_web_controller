@@ -1,0 +1,37 @@
+CHANGES
+=======
+
+* working on scratch integration
+* working on scratch integration
+* working on scratch integration
+* working on scratch integration
+* added scratch
+* change socket to avoid conflict with joystick
+* working on test cases
+* changed communication to UDPComms
+* more testing
+* impoved test tool, working on more tests
+* removed pt.py
+* doing more testing
+* working on test code
+* added tests
+* added .gitignore
+* updated README and supervisor scripts
+* added README
+* fixed supervisor script
+* disbale robot services and replace with Supervisor
+* WIP
+* WIP
+* WIP
+* WIP
+* WIP
+* WIP
+* added basic controls to web GUI
+* WIP
+* WIP
+* WIP
+* do not build angular frontend in install.sh. Added some changes to controller.py
+* WIP
+* WIP
+* testing on pupper
+* first checked in

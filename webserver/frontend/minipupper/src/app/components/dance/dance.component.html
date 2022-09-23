@@ -1,0 +1,29 @@
+<mat-card class="dance-card">
+  <mat-card-content>
+    <h1>Dance</h1>
+    <h2>Pitch:</h2>
+    <mat-slider (input)="onChange('pitch', $event.value)" min="-100" max="100" step="1" [(value)]="pitch" thumbLabel=True></mat-slider>
+    <h2>Yaw:</h2>
+    <mat-slider (input)="onChange('yaw', $event.value)" min="-100" max="100" step="1" [(value)]="yaw" thumbLabel=True></mat-slider>
+    <h2>Roll:</h2>
+    <p>
+      <div class="button-roll">
+	<button mat-raised-button (click)="onClick('rollplus')">Roll+</button>
+	<button mat-raised-button (click)="onClick('rollminus')">Roll-</button>
+      </div>
+      <p></p>
+    <h2>Height:</h2>
+    <p>
+      <div class="button-height">
+	<button mat-raised-button (click)="onClick('heightplus')">Height+</button>
+	<button mat-raised-button (click)="onClick('heightminus')">Height-</button>
+      </div>
+      <p></p>
+    <h2>Toggle Dance Mode:</h2>
+    <p>
+      <div class="button-activate">
+	<button mat-raised-button (click)="onClick('toggle')">Dance/Rest</button>
+      </div>
+  </mat-card-content>
+  <img mat-card-image src="img/rpy.png" alt="rpy image">
+</mat-card>

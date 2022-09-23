@@ -1,0 +1,17 @@
+# This test setting roll
+1=Activate Robot
+echo Robot should show "walk.png"
+25=Wait
+5=Roll the Body Left
+echo Robot should have rolled left
+25=Wait
+6=Roll the Body Right
+6=Roll the Body Right
+echo Robot should have rolled right
+25=Wait
+5=Roll the Body Left
+echo Robot should have moved to a middle position
+25=Wait
+1=Activate Robot
+echo Robot should show "notconnect.png"
+25=Wait

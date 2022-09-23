@@ -1,0 +1,33 @@
+# test the test tool, run python pt2.py -i localhost -f test_pt2.txt
+# this is a comment
+# next line is empty
+
+1=Activate Robot
+2=Toggle Rest/Trot States
+3=Raise Body
+4=Lower Body
+5=Roll Body Left
+6=Roll Body Right
+7=Yaw Left Mid
+8=Yaw Left Max
+9=Yaw Right Mid	
+10=Yaw Right Max
+11=Pitch Down Mid
+12=Pitch Down Max
+13=Pitch Up Mid	
+14=Pitch Up Max
+15=Forward Fast
+16=Forward Slow
+17=Reverse Fast
+18=Reverse Slow
+19=Left Fast
+20=Left Slow
+21=Right Fast
+22=Right Slow
+23=Deactivate
+24=Shutdown
+25=Wait
+# test alternate formats
+ 1
+2
+3 raise body

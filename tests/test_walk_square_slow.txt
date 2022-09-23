@@ -1,0 +1,25 @@
+# This test tests toggeling trot mode
+1=Activate Robot
+echo Robot should show "walk.png"
+25=Wait
+2=Set Trot Mode
+echo Robot should be in trot mode
+25=Wait
+16=Forward Slow
+echo Robot should move forward slow
+25=Wait
+20=Left Slow
+echo Robot should move left slow
+25=Wait
+18=Reverse Slow
+echo Robot should move back slow
+25=Wait
+22=Right Slow
+echo Robot should right back slow
+25=Wait
+2=Set Trot Mode
+echo Robot should be in rest mode
+25=Wait
+1=Activate Robot
+echo Robot should show "notconnect.png"
+25=Wait

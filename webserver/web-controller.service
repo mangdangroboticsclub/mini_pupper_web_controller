@@ -1,0 +1,12 @@
+[Unit]
+Description=Robot web web-controller service
+Requires=robot.service
+After=robot.service
+
+[Service]
+ExecStart=taskset -c 0,1 /usr/local/bin/web-controller
+KillSignal=2
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

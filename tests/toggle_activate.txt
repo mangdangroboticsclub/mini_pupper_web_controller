@@ -1,0 +1,2 @@
+# utility script to change activation status
+1=Activate Robot

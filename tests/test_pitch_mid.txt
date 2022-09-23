@@ -1,0 +1,17 @@
+# This test setting pitch
+1=Activate Robot
+echo Robot should show "walk.png"
+25=Wait
+11=Do Pitch Down mid
+echo Robot should have pitched down
+25=Wait
+13=Do Pitch UP mid
+echo Robot should have pitched up
+25=Wait
+25=Wait
+27=Do Pitch neutral
+echo Robot should have moved to neutral position
+25=Wait
+1=Activate Robot
+echo Robot should show "notconnect.png"
+25=Wait

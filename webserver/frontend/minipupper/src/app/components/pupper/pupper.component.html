@@ -1,0 +1,17 @@
+<mat-card class="pupper-card">
+  <mat-card-content>
+    <h1>Controller</h1>
+    <p>
+      <mat-button-toggle-group (change)="onClick($event.value)" name="fontStyle" aria-label="Font Style" #group="matButtonToggleGroup">
+        <mat-button-toggle value="start">Activate</mat-button-toggle>
+        <mat-button-toggle value="stop">Deactivate</mat-button-toggle>
+      </mat-button-toggle-group>
+    </p>
+    <h1>Pupper</h1>
+    <p>
+      <div class="button-activate">
+	<button mat-raised-button (click)="onClick('toggle')">Activate/Deactivate</button>
+	<button mat-raised-button (click)="onClick('shutdown')">Shutdown</button>
+      </div>
+  </mat-card-content>
+</mat-card>

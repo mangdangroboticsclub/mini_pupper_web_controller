@@ -1,0 +1,11 @@
+<mat-card class="walk-card">
+  <mat-card-content>
+    <h1>Walk</h1>
+    <mat-slider (input)="onChange('vel_y', $event.value)" vertical min="-100" max="100" step="1" [(value)]="vely" thumbLabel=True></mat-slider>
+    <mat-slider (input)="onChange('vel_x', $event.value)" min="-100" max="100" step="1" [(value)]="velx" thumbLabel=True></mat-slider>
+    <p>
+      <div class="button-activate">
+	<button mat-raised-button (click)="onClick('toggle')">Walk/Rest</button>
+      </div>
+  </mat-card-content>
+</mat-card>

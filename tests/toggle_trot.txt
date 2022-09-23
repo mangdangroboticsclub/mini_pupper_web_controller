@@ -1,0 +1,3 @@
+# utility to put robot in rest mode
+2=Set Trot Mode
+25=Wait
