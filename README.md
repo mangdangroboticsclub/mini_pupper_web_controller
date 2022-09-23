@@ -17,7 +17,7 @@ It also install a pygame based keyborad controller that you might find usefull i
 - ./minipupper-bsp/update_kernel_modules.sh; sudo reboot
 - cd StanfordQuadruped
 - ./install.sh
-- ./configure_network.sh <SSID> <PASSWORD>
+- ./configure_network.sh &lt;my SSID&gt; &lt;my wifi password&gt;
 - cd ~
 - ./mini_pupper_web_controller/webserver/install.sh
 - sudo apt-get install -y libsdl2-2.0-0
