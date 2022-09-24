@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'minipupper'`, () => {
+  it(`should have as title 'mini_pupper'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('minipupper');
+    expect(app.title).toEqual('mini_pupper');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('minipupper app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('mini_pupper app is running!');
   });
 });
