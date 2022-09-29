@@ -7,5 +7,6 @@ webserver/frontend/minipupper/dist/
 webserver/frontend/minipupper/.angular
 joystick_sim/joystick_sim.egg-info
 joystick_sim/joystick_sim/__pycache__
+joystick_sim/joystick_sim/tests/__pycache__
 joystick_sim/.eggs
 joystick_sim/build/
