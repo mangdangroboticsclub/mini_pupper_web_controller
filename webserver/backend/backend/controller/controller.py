@@ -35,7 +35,7 @@ class Controller:
             if gait == 'pupper' and param == 'toggle':
                 self.joystick.push_L1()
             if gait == 'pupper' and param == 'shutdown':
-                self.joystick.push_triange()
+                self.joystick.push_triangle()
             if gait == 'walk' and param == 'toggle':
                 self.joystick.push_R1()
             if gait == 'dance' and param == 'toggle':

@@ -1,13 +1,13 @@
 import time
-from minipupper import CONF
+from mini_pupper import CONF
 
-if CONF.minipupper.environment == 'simulator':
+if CONF.mini_pupper.environment == 'simulator':
     from backend.controller.simulator.pybullet import Simulator
     from backend.controller.simulator.hardware_interface import Servo
 
 
 def main():
-    if CONF.minipupper.environment == 'simulator':
+    if CONF.mini_pupper.environment == 'simulator':
         servo = Servo(isServer=True)
         sim = Simulator(servo)
         while True:

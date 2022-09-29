@@ -54,7 +54,7 @@ class Joystick(threading.Thread):
     def push_circle(self):
         self.the_deque.append(Commands.CIRCLE)
 
-    def push_triange(self):
+    def push_triangle(self):
         self.the_deque.append(Commands.TRIANGLE)
 
     def set_velocity(self, x, y):
