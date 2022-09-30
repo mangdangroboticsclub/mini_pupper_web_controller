@@ -1,4 +1,5 @@
 import time
+import os
 import threading
 from collections import deque
 from enum import Enum
@@ -131,3 +132,29 @@ class Joystick(threading.Thread):
                     self.the_command = Commands.NONE
 
             time.sleep(1 / self.message_rate)
+
+
+class Check(threading.Thread):
+    """This class is only used for testing."""
+
+    def __init__(self, result_dir, expected_dir):
+        self.result_dir = result_dir
+        self.expected_dir = expected_dir
+
+    def compare_results(self, result_file, expected_file):
+        with open(os.path.join(self.result_dir, result_file), 'r') as fh:
+            res = self._remove_duplicates(fh)
+        with open(os.path.join(self.expected_dir, expected_file), 'r') as fh:
+            exp = self._remove_duplicates(fh)
+        return res == exp
+
+    def _remove_duplicates(self, fh):
+        last_line = None
+        res = []
+        for line in fh:
+            if line == last_line:
+                continue
+            else:
+                res.append(line)
+                last_line = line
+        return res

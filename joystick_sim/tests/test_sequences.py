@@ -1,18 +1,6 @@
 import os
 import time
-from joystick_sim.joystick import Joystick
-
-
-def compare_files_truncated(expected, result):
-    with open(result, 'r') as fh:
-        res = fh.readlines()
-    with open(expected, 'r') as fh:
-        exp = fh.readlines()
-    cmp_len = min(len(res), len(exp))
-    if cmp_len < len(exp):
-        # improve expected
-        return False
-    return res[0:cmp_len] == exp[0:cmp_len]
+from joystick_sim.joystick import Joystick, Check
 
 
 def test_cancel_shutdown():
@@ -28,8 +16,8 @@ def test_cancel_shutdown():
     time.sleep(0.5)
     joystick.stop()
     joystick.join()
-    assert compare_files_truncated(os.path.join(os.path.dirname(__file__), 'expected_results', 'seq_log_1'),
-                                   '/tmp/log.txt')
+    check = Check('/tmp', os.path.join(os.path.dirname(__file__), 'expected_results'))
+    assert check.compare_results('log.txt', 'seq_log_1')
 
 
 def test_robot_activate_deactivate():
@@ -46,8 +34,8 @@ def test_robot_activate_deactivate():
     joystick.deactivate()
     joystick.stop()
     joystick.join()
-    assert compare_files_truncated(os.path.join(os.path.dirname(__file__), 'expected_results', 'seq_log_2'),
-                                   '/tmp/log.txt')
+    check = Check('/tmp', os.path.join(os.path.dirname(__file__), 'expected_results'))
+    assert check.compare_results('log.txt', 'seq_log_2')
 
 
 if __name__ == "__main__":
