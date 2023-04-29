@@ -3,6 +3,7 @@
 ### Get directory where this script is installed
 BASEDIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+sudo apt remove -y python3-blinker
 sudo pip uninstall -y backend
 sudo rm -rf $BASEDIR/backend/backend.egg-info
 sudo rm -rf $BASEDIR/backend/build
