@@ -23,8 +23,33 @@ git clone https://github.com/mangdangroboticsclub/mini_pupper_web_controller.git
 ```
 
 ## Run
-Point a web browser to http://x.x.x.x:8080 where x.x.x.x is the IP address of your mini_pupper
 
+### Make sure Mini Pupper can get IP address
+
+Use your own WiFi AP name and password to replace the default value in "/etc/netplan/50-cloud-init.yaml" 
+
+You can use the SD card to boot the system, then edit line 16, 17 in "/etc/netplan/50-cloud-init.yaml", or 
+
+You put the SD card into the SD reader and plug it into a Ubuntu PC, and then edit 50-cloud-init.yaml, just as shown in the below picture, 
+
+![setIPaddress](imgs/changeWiFi.png)
+
+and then run the command "sudo netplan apply" or reboot Mini Pupper, and then the IP address should be shown on the screen.
+
+![IPaddress](imgs/IPaddress.jpg)
+
+
+### Use a web browser to control 
+
+- Point a web browser to http://x.x.x.x:8080 where x.x.x.x is the IP address of your mini_pupper, such as, http://192.168.5.196:8080
+- Click the “Activate” button of the "Controller" tab. 
+- Click the “Activate/Deactivate” button of the "Pupper" tab.
+- Click the "≡" icon at the top left corner.
+- Choose the "Walk" option.
+- Click the "Walk/Rest" button.
+- Use the scroll bar to control your Mini Pupper
+
+![useGuide](imgs/webGuide.png)
 
 ## Keyboard controller
 If you want to use a keyboard to control Mini Pupper, please try the below steps. Be certain to tell ssh to allow X11 forwarding before you run it.
