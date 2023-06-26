@@ -9,12 +9,11 @@ Web GUI that can be run on mobile devices, such as smartphones, Pad, and Noteboo
 
 ## Installation
 
-Step1: install [mini_pupper_bsp](https://github.com/mangdangroboticsclub/mini_pupper_bsp.git)  repo and run the test script to ensure your installation works as expected. Please make sure you install the right branch for your Mini Pupper or Mini Pupper 2.
+Step 1: Install the BSP((board support package) repo for your [Mini Pupper 2](https://github.com/mangdangroboticsclub/mini_pupper_2_bsp) or [Mini Pupper](https://github.com/mangdangroboticsclub/mini_pupper_bsp.git).
 
-Step2: install [mini_pupper](https://github.com/mangdangroboticsclub/StanfordQuadruped)  repo.
+Step 2: Install [StanfordQuadruped](https://github.com/mangdangroboticsclub/StanfordQuadruped)  repo.
 
-
-After the up installation, please follow the below steps.
+Step 3: Install this repo.
 
 ```
 cd ~
