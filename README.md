@@ -23,13 +23,19 @@ git clone https://github.com/mangdangroboticsclub/mini_pupper_web_controller.git
 
 ## Run
 
-### Make sure Mini Pupper can get IP address
+### Make sure Mini Pupper can get its IP address
 
-Use your own WiFi AP name and password to replace the default value in "/etc/netplan/50-cloud-init.yaml" 
+- If you compile the code by yourself, you will see Mini Pupper IP address on the screen.
+  
+- If you use the pre-built image, please confirm the following steps.
 
-You can use the SD card to boot the system, then edit line 16, 17 in "/etc/netplan/50-cloud-init.yaml", or 
-
-You put the SD card into the SD reader and plug it into a Ubuntu PC, and then edit 50-cloud-init.yaml, just as shown in the below picture, 
+#### Set the same WiFi as the pre-built image
+WiFi AP name is Mangdang and the password is mangdang . You can set the same WiFi using your Mobile phone, Mini Pupper will find and connect the WiFi when booting up, and then the IP address will show on the screen.
+  
+  ![IPaddress](imgs/IPaddress.jpg)
+  
+#### Config your own WiFi
+Use your own WiFi AP name and password to replace the default values in "/etc/netplan/50-cloud-init.yaml" . You can use the SD card to boot the system, then edit line 16, 17 in "/etc/netplan/50-cloud-init.yaml", or you put the SD card into the SD reader and plug it into a Ubuntu PC, and then edit 50-cloud-init.yaml, just as shown in the following picture, 
 
 ![setIPaddress](imgs/changeWiFi.png)
 
