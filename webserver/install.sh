@@ -14,7 +14,7 @@ if [ "$IS_RELEASE" == "YES" ]
 then
     sudo PBR_VERSION=$(cd $BASEDIR; ~/mini_pupper_bsp/get-version.sh)  pip install $BASEDIR/backend
     sudo PBR_VERSION=$(cd $BASEDIR; ~/mini_pupper_bsp/get-version.sh)  pip install $BASEDIR/../joystick_sim
-else:
+else
     sudo pip install $BASEDIR/backend
     sudo pip install $BASEDIR/../joystick_sim
 fi
