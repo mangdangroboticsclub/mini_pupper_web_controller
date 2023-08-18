@@ -19,8 +19,9 @@ then
     then
         sed -i "s/IS_RELEASE=YES/IS_RELEASE=NO/" ~/mini-pupper-release
     fi
-    sudo PBR_VERSION=$(cd $BASEDIR; ~/mini_pupper_bsp/get-version.sh)  pip install $BASEDIR/backend
-    sudo PBR_VERSION=$(cd $BASEDIR; ~/mini_pupper_bsp/get-version.sh)  pip install $BASEDIR/../joystick_sim
+    VERSION=$(cd $BASEDIR; ~/mini_pupper_bsp/get-version.sh)
+    sudo PBR_VERSION=$VERSION pip install $BASEDIR/backend
+    sudo PBR_VERSION=$VERSION  pip install $BASEDIR/../joystick_sim
 else
     sudo pip install $BASEDIR/backend
     sudo pip install $BASEDIR/../joystick_sim
