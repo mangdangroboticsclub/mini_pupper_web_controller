@@ -56,7 +56,7 @@ and then run the command "sudo netplan apply" or reboot Mini Pupper, and then th
 
 ![useGuide](imgs/webGuide.png)
 
-## Keyboard controller
+## Keyboard controller on PC side(Need to update later)
 If you want to use a keyboard to control Mini Pupper, please try the below steps. Be certain to tell ssh to allow X11 forwarding before you run it.
 
 ```bash
@@ -65,6 +65,7 @@ ssh -o ForwardX11=yes ubuntu@<Your Mini Pupper IP address>
 
 ```
 cd ~
+sudo apt-get update
 sudo apt-get install -y libsdl2-2.0-0
 sudo pip3 install pygame
 git clone https://github.com/mangdangroboticsclub/PupperKeyboardController
