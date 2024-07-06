@@ -19,9 +19,12 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PupperComponent } from './components/pupper/pupper.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { PupperComponent } from './components/pupper/pupper.component';
     WalkComponent,
     JumpComponent,
     SchematicsNavigationComponent,
-    PupperComponent
+    PupperComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ import { PupperComponent } from './components/pupper/pupper.component';
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     MatListModule
   ],

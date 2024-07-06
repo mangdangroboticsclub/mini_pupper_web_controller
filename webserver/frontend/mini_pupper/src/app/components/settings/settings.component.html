@@ -1,0 +1,32 @@
+<mat-card class="settings-card">
+  <mat-card-content class="separator">
+    <h2>WiFi Settings</h2>
+    <form (ngSubmit)="onClick(ssid, password)" #wifiForm="ngForm">
+      <mat-form-field appearance="fill">
+        <mat-label>SSID</mat-label>
+        <input matInput type="text" [(ngModel)]="ssid" name="ssid" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="password" name="password" required>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" [disabled]="!wifiForm.valid">Connect</button>
+    </form>
+  </mat-card-content>
+  <mat-card-content class="separator">
+    <h2>System</h2>
+      <div class="button-group">
+        <button mat-raised-button color="warn" (click)="onShellClick('reboot')">Reboot</button>
+        <button mat-raised-button color="warn" (click)="onShellClick('poweroff')">PowerOff</button>
+      </div>
+  </mat-card-content>
+  <mat-card-content class="separator">
+    <h2>App</h2>
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="onShellClick('systemctl start ai')">AI On</button>
+        <button mat-raised-button color="accent" (click)="onShellClick('systemctl stop ai')">AI Off</button>
+      </div>
+  </mat-card-content>
+</mat-card>
