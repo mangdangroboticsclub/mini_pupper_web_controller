@@ -6,6 +6,23 @@ def get_indentation(line):
     return len(line) - len(line.lstrip(' '))
 
 
+def _yaml_single_quote(value):
+    # YAML single-quoted scalar escaping: single quote becomes doubled.
+    return "'" + value.replace("'", "''") + "'"
+
+
+def _entry_key_from_line(line):
+    stripped = line.strip()
+    if not stripped.endswith(':'):
+        return None
+    key = stripped[:-1].strip()
+    if len(key) >= 2 and key[0] == "'" and key[-1] == "'":
+        return key[1:-1].replace("''", "'")
+    if len(key) >= 2 and key[0] == '"' and key[-1] == '"':
+        return key[1:-1].replace('\\"', '"')
+    return key
+
+
 def insert_ssid_password(new_ssid, new_password, input_file_path="/etc/netplan/50-cloud-init.yaml", output_file_path="/home/ubuntu/50-cloud-init.yaml.new"):
     with open(input_file_path, 'r') as file:
         config_lines = file.readlines()
@@ -21,29 +38,47 @@ def insert_ssid_password(new_ssid, new_password, input_file_path="/etc/netplan/5
 
     access_points_indentation = get_indentation(config_lines[access_points_line_index])
 
-    new_ssid_line = f"{' ' * (access_points_indentation + 4)}{new_ssid}:\n"
-    new_password_line = f"{' ' * (access_points_indentation + 8)}password: {new_password}\n"
+    entry_indent = access_points_indentation + 4
+    password_indent = access_points_indentation + 8
+
+    quoted_ssid = _yaml_single_quote(new_ssid)
+    quoted_password = _yaml_single_quote(new_password)
+    new_ssid_line = f"{' ' * entry_indent}{quoted_ssid}:\n"
+    new_password_line = f"{' ' * password_indent}password: {quoted_password}\n"
 
     new_config_lines = []
     inserted = False
-    skip_password_line = False
 
-    for line in config_lines:
-        if skip_password_line:
-            skip_password_line = False
+    i = 0
+    while i < len(config_lines):
+        line = config_lines[i]
+
+        if i == access_points_line_index:
+            new_config_lines.append(line)
+            if not inserted:
+                new_config_lines.append(new_ssid_line)
+                new_config_lines.append(new_password_line)
+                inserted = True
+            i += 1
             continue
 
-        if re.match(r'^\s*' + re.escape(new_ssid) + r':\s*$', line):
-            next_line = config_lines[config_lines.index(line) + 1]
-            if "password" in next_line:
-                skip_password_line = True
-                continue
+        indent = get_indentation(line)
+        key = _entry_key_from_line(line)
+        if indent == entry_indent and key == new_ssid:
+            # Skip the existing SSID block so we can replace it with the latest credentials.
+            i += 1
+            while i < len(config_lines):
+                next_line = config_lines[i]
+                if next_line.strip() == '':
+                    i += 1
+                    continue
+                if get_indentation(next_line) <= entry_indent:
+                    break
+                i += 1
+            continue
 
         new_config_lines.append(line)
-        if 'access-points:' in line and not inserted:
-            new_config_lines.append(new_ssid_line)
-            new_config_lines.append(new_password_line)
-            inserted = True
+        i += 1
 
 
     with open(output_file_path, 'w') as file:

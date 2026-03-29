@@ -10,12 +10,20 @@ BASEDIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 # check Ubuntu version
 source /etc/os-release
 
-if [[ $UBUNTU_CODENAME != 'jammy' ]]
+if [[ $UBUNTU_CODENAME != 'jammy' && $UBUNTU_CODENAME != 'noble' ]]
 then
-    echo "Ubuntu 22.04 LTS (Jammy Jellyfish) is required"
+    echo "Ubuntu 22.04 LTS (Jammy) or 24.04 LTS (Noble) is required"
     echo "You are using $VERSION"
     exit 1
 fi
+
+if [[ "$1" != "v1" && "$1" != "v2" ]]
+then
+    echo "Usage: $0 <v1|v2>"
+    exit 1
+fi
+
+SKIP_CORE_INSTALL=${SKIP_CORE_INSTALL:-0}
 
 cd ~
 if [ ! -d ~/mini_pupper_bsp ]
@@ -25,11 +33,16 @@ then
 fi
 [[ -d ~/StanfordQuadruped ]] || git clone https://github.com/mangdangroboticsclub/StanfordQuadruped.git
 
-# Install Mini Pupper BSP
-~/mini_pupper_bsp/install.sh
+if [ "$SKIP_CORE_INSTALL" -eq 0 ]
+then
+    # Install Mini Pupper BSP
+    ~/mini_pupper_bsp/install.sh
 
-# Install StanfordQuadruped
-~/StanfordQuadruped/install.sh $1
+    # Install StanfordQuadruped
+    ~/StanfordQuadruped/install.sh $1
+else
+    echo "Skipping Mini Pupper BSP and StanfordQuadruped install (SKIP_CORE_INSTALL=$SKIP_CORE_INSTALL)."
+fi
 
 # Install Web GUI
 $BASEDIR/webserver/install.sh

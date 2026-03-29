@@ -9,6 +9,8 @@ Web GUI that can be run on mobile devices, such as smartphones, Pad, and Noteboo
 
 ## Installation
 
+Supported OS: Ubuntu 22.04 (Jammy) and Ubuntu 24.04 (Noble).
+
 Step 1: Install the BSP((board support package) repo for your [Mini Pupper 2](https://github.com/mangdangroboticsclub/mini_pupper_2_bsp) or [Mini Pupper](https://github.com/mangdangroboticsclub/mini_pupper_bsp.git).
 
 Step 2: Install [StanfordQuadruped](https://github.com/mangdangroboticsclub/StanfordQuadruped)  repo.
@@ -19,6 +21,16 @@ Step 3: Install this repo.
 cd ~
 git clone https://github.com/mangdangroboticsclub/mini_pupper_web_controller.git
 ./mini_pupper_web_controller/webserver/install.sh
+```
+
+This one command installs the web controller backend, joystick simulator package,
+and enables/starts the `web-controller` service.
+
+Optional full stack installer (BSP + StanfordQuadruped + web controller):
+
+```
+cd ~
+./mini_pupper_web_controller/setup.sh v2
 ```
 
 ## Run
