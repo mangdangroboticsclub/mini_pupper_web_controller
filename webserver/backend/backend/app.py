@@ -6,6 +6,9 @@ from backend.settings import set_all
 
 
 PORT = 8080
+BASE_DIR = os.path.dirname(__file__)
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+IMG_DIR = os.path.join(BASE_DIR, 'img')
 
 app = Flask(__name__)
 controller = Controller()
@@ -13,7 +16,7 @@ controller = Controller()
 
 @app.route('/<path:path>', methods=['GET'])
 def static_proxy(path):
-    return send_from_directory('./static/', path)
+    return send_from_directory(STATIC_DIR, path)
 
 
 @app.route('/')
@@ -23,11 +26,11 @@ def static_proxy(path):
 @app.route('/walk')
 @app.route('/jump')
 def root():
-    return send_from_directory("%s%s" % (os.path.dirname(__file__), '/static/'), 'index.html')
+    return send_from_directory(STATIC_DIR, 'index.html')
 
 @app.route('/img/<path:path>')
 def send_img(path):
-    return send_from_directory("%s%s" % (os.path.dirname(__file__), '/img/'), path)
+    return send_from_directory(IMG_DIR, path)
 
 @app.route("/pupper/<string:command>/<string:param>", methods=['GET'])
 def pupper(command, param):
@@ -35,7 +38,7 @@ def pupper(command, param):
     controller.setParams(gait, command, param)
     return controller.getParams(gait, command, param)
 
-@app.route("/settings/<string:command>/<string:param>", methods=['GET'])
+@app.route("/settings/<path:command>/<path:param>", methods=['GET'])
 def settings(command, param):
     return set_all.exe_setting(command, param)
 

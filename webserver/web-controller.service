@@ -4,7 +4,9 @@ Requires=robot.service
 After=robot.service
 
 [Service]
-ExecStart=taskset -c 0,1 /usr/local/bin/web-controller
+WorkingDirectory=/home/ubuntu/mini_pupper_web_controller/webserver/backend/backend
+ExecStart=/usr/bin/taskset -c 0,1 /usr/bin/env web-controller
+Restart=on-failure
 KillSignal=2
 TimeoutStopSec=10
 
