@@ -23,16 +23,6 @@ git clone https://github.com/mangdangroboticsclub/mini_pupper_web_controller.git
 ./mini_pupper_web_controller/webserver/install.sh
 ```
 
-This one command installs the web controller backend, joystick simulator package,
-and enables/starts the `web-controller` service.
-
-Optional full stack installer (BSP + StanfordQuadruped + web controller):
-
-```
-cd ~
-./mini_pupper_web_controller/setup.sh v2
-```
-
 ## Run
 
 ### Make sure Mini Pupper can get its IP address
