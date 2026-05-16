@@ -17,14 +17,6 @@ then
     exit 1
 fi
 
-if [[ "$1" != "v1" && "$1" != "v2" ]]
-then
-    echo "Usage: $0 <v1|v2>"
-    exit 1
-fi
-
-SKIP_CORE_INSTALL=${SKIP_CORE_INSTALL:-0}
-
 cd ~
 if [ ! -d ~/mini_pupper_bsp ]
 then
@@ -33,16 +25,11 @@ then
 fi
 [[ -d ~/StanfordQuadruped ]] || git clone https://github.com/mangdangroboticsclub/StanfordQuadruped.git
 
-if [ "$SKIP_CORE_INSTALL" -eq 0 ]
-then
-    # Install Mini Pupper BSP
-    ~/mini_pupper_bsp/install.sh
+# Install Mini Pupper BSP
+~/mini_pupper_bsp/install.sh
 
-    # Install StanfordQuadruped
-    ~/StanfordQuadruped/install.sh $1
-else
-    echo "Skipping Mini Pupper BSP and StanfordQuadruped install (SKIP_CORE_INSTALL=$SKIP_CORE_INSTALL)."
-fi
+# Install StanfordQuadruped
+~/StanfordQuadruped/install.sh $1
 
 # Install Web GUI
 $BASEDIR/webserver/install.sh
